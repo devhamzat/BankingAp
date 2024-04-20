@@ -23,4 +23,13 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 
     }
+    @ExceptionHandler(MissingFirstAndLastNameAndEmail.class)
+    public ResponseEntity<ApplicationError> handleNullError(MissingFirstAndLastNameAndEmail exception) {
+        ApplicationError error = new ApplicationError();
+        error.setCode(409);
+        error.setMessage(exception.getMessage());
+        error.setDetails(details);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
 }

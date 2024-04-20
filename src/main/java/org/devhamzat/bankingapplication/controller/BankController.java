@@ -11,15 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/DevBank")
-public class Controller {
+public class BankController {
     @Autowired
     private AccountService accountService;
 
-    public Controller(AccountService accountService) {
+    public BankController(AccountService accountService) {
         this.accountService = accountService;
     }
+
     @PostMapping(value = "/account/register")
-    public ResponseEntity<String> createAccount(@RequestBody Account account){
+    public ResponseEntity<String> createAccount(@RequestBody Account account) {
+
         ResponseEntity<String> responseEntity = accountService.createAccount(account);
         return responseEntity;
     }

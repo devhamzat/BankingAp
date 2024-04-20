@@ -1,17 +1,15 @@
-package org.devhamzat.bankingapplication.utils.AccountNumberGenerator;
+package org.devhamzat.bankingapplication.utils.numberGenerator;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.Base64;
 import java.util.Random;
 
 @Service
 public class AccountNumberGenerator {
     private static final String PREFIX = "315";
-    public static String generateAccountNumber() {
+    public String generateAccountNumber() {
         Random random = new Random();
 
 
