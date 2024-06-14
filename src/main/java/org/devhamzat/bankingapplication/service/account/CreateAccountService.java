@@ -15,13 +15,13 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class AccountService implements AccountServiceInterface {
+public class CreateAccountService implements AccountServiceInterface {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
     private AccountNumberGenerator accountNumberGenerator;
 
-    public AccountService(AccountRepository accountRepository, AccountNumberGenerator accountNumberGenerator) {
+    public CreateAccountService(AccountRepository accountRepository, AccountNumberGenerator accountNumberGenerator) {
         this.accountRepository = accountRepository;
         this.accountNumberGenerator = accountNumberGenerator;
     }
@@ -29,14 +29,16 @@ public class AccountService implements AccountServiceInterface {
     @Override
     @Transactional
     public ResponseEntity<String> createAccount(Account account) {
+
+        String accountNumber = accountNumberGenerator.generateAccountNumber();
+        Optional<Account> accountByAccountNumber = accountRepository.findAccountByAccountNumber(account.getAccountNumber());
+        Optional<Account> accountByEmail = accountRepository.findAccountByEmail(account.getEmail());
+
+        if (accountByEmail.isPresent()) {
+            throw new InvalidAccountCreation("account is present");
+        }
         if (account.getAccountFirstName().isEmpty() || account.getAccountLastName().isEmpty() || account.getEmail().isEmpty()) {
             throw new MissingFirstAndLastNameAndEmail("first name, last name  and email can not be empty");
-        }
-        String accountNumber = accountNumberGenerator.generateAccountNumber();
-        Optional<Account> accountOptional = accountRepository.findAccountByAccountNumber(account.getAccountNumber());
-
-        if (accountOptional.isPresent()) {
-            throw new InvalidAccountCreation("account is present");
         }
         if (!Objects.equals(account.getAccountNumber(), accountNumber)) {
             account.setAccountNumber(accountNumber);

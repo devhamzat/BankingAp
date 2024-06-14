@@ -1,7 +1,5 @@
 package org.devhamzat.bankingapplication.utils.numberGenerator;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -9,6 +7,7 @@ import java.util.Random;
 @Service
 public class AccountNumberGenerator {
     private static final String PREFIX = "315";
+
     public String generateAccountNumber() {
         Random random = new Random();
 

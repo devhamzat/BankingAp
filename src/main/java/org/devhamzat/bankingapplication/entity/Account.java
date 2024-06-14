@@ -38,4 +38,6 @@ public class Account {
     private String email;
     @OneToMany
     private List<Transaction> transactionList;
+
+
 }

@@ -23,6 +23,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 
     }
+
     @ExceptionHandler(MissingFirstAndLastNameAndEmail.class)
     public ResponseEntity<ApplicationError> handleNullError(MissingFirstAndLastNameAndEmail exception) {
         ApplicationError error = new ApplicationError();
@@ -31,5 +32,24 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         error.setDetails(details);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(DepositException.class)
+    public ResponseEntity<ApplicationError> handleDepositException(DepositException exception) {
+        ApplicationError error = new ApplicationError();
+        error.setCode(400);
+        error.setMessage(exception.getMessage());
+        error.setDetails(details);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(InvalidDepositAmount.class)
+    public ResponseEntity<ApplicationError> handleDepositException(InvalidDepositAmount exception) {
+        ApplicationError error = new ApplicationError();
+        error.setCode(400);
+        error.setMessage(exception.getMessage());
+        error.setDetails(details);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+
 
 }
