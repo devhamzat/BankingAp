@@ -49,6 +49,14 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         error.setDetails(details);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(AccountNotExisting.class)
+    public ResponseEntity<ApplicationError> handleAccountNotExistingException(AccountNotExisting exception) {
+        ApplicationError error = new ApplicationError();
+        error.setCode(400);
+        error.setMessage(exception.getMessage());
+        error.setDetails(details);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
 
 
 

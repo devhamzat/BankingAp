@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.devhamzat.bankingapplication.utils.enums.Gender;
 
+import java.time.LocalDate;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -21,4 +23,5 @@ public class UserRequest {
     private String phoneNumber;
     private String altPhoneNumber;
     private String altEmail;
+    private LocalDate dob;
 }
