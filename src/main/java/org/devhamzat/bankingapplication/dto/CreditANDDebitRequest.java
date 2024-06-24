@@ -1,2 +1,16 @@
-package org.devhamzat.bankingapplication.dto;public class CreditANDDebitRequest {
+package org.devhamzat.bankingapplication.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class CreditANDDebitRequest {
+    private String accountNumber;
+    private BigDecimal amount;
 }
