@@ -21,6 +21,7 @@ target/
 /src/main/resources/application.properties
 .gitignore
 
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
