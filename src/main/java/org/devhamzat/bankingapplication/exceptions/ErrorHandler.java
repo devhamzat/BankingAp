@@ -41,8 +41,8 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         error.setDetails(details);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
-    @ExceptionHandler(InvalidDepositAmount.class)
-    public ResponseEntity<ApplicationError> handleDepositException(InvalidDepositAmount exception) {
+    @ExceptionHandler(InsufficientFundsException.class)
+    public ResponseEntity<ApplicationError> InsufficientFunds(InsufficientFundsException exception) {
         ApplicationError error = new ApplicationError();
         error.setCode(400);
         error.setMessage(exception.getMessage());

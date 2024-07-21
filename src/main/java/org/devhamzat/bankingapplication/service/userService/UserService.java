@@ -1,8 +1,6 @@
 package org.devhamzat.bankingapplication.service.userService;
 
-import org.devhamzat.bankingapplication.dto.EnquiryRequest;
-import org.devhamzat.bankingapplication.dto.Response;
-import org.devhamzat.bankingapplication.dto.UserRequest;
+import org.devhamzat.bankingapplication.dto.*;
 
 public interface UserService {
     Response createAccount(UserRequest userRequest);
@@ -10,4 +8,10 @@ public interface UserService {
     Response balanceEnquiry(EnquiryRequest enquiryRequest);
 
     String nameEnquiry(EnquiryRequest enquiryRequest);
+
+    Response creditAccount(CreditANDDebitRequest creditANDDebitRequest);
+
+    Response DebitAccount(CreditANDDebitRequest creditANDDebitRequest);
+
+    Response transfer(TransferRequest transferRequest);
 }
